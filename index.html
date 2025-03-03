@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTIONS Restro Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Restaurant Header Section -->
+        <header class="restaurant-info">
+            <h1 class="restaurant-name"></h1>
+            <p class="restaurant-details"></p>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav class="category-nav">
+            <button onclick="filterDishes('north-indian')">North Indian</button>
+            <button onclick="filterDishes('south-indian')">South Indian</button>
+            <button onclick="filterDishes('italian')">Italian</button>
+            <button onclick="filterDishes('chinese')">Chinese</button>
+            <button onclick="filterDishes('all')" style="background-color: #007bff;">Show All</button>
+        </nav>
+
+        <!-- Vegetarian Section -->
+        <section class="menu-section" id="vegetarian">
+            <div id="vegetarian-menu"></div>
+        </section>
+
+        <!-- Non-Vegetarian Section -->
+        <section class="menu-section" id="non-vegetarian">
+            <div id="nonvegetarian-menu"></div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-container" id="footer-main">
+                <button id="toggle-nav">Menu List</button>
+                <button class="placeorder" onclick="shareOnWhatsApp()" aria-label="Share on WhatsApp">
+                    Pay on UPI
+                </button>
+            </div>
+            <span class="footer-text">Teyzee Menus! 
+                <a class="link" href="https://www.ariaprohotels.com/qr-code-menu/">- by AriaProHotels.com</a>
+            </span>
+
+            <div id="menu-container">
+                <div class="menu-toggle-container">
+                    <button id="hide-nav">Hide Menu Sections</button>
+                </div>
+                <div id="menu-nav">
+                    <a href="#vegetarian">Vegetarian</a>
+                    <a href="#jain-vegetarian">Jain-Vegetarian</a>
+                    <a href="#non-vegetarian">Non-Vegetarian</a>
+                    <a href="#keto-friendly">Keto-Friendly</a>
+                    <a href="#vegan">Vegan</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="menu.js"></script> <!-- JavaScript File -->
+    <script>
+        document.getElementById("toggle-nav").addEventListener("click", function () {
+            document.getElementById("menu-container").style.display = "block";
+            document.getElementById("footer-main").style.display = "none";
+        });
+
+        document.getElementById("hide-nav").addEventListener("click", function () {
+            document.getElementById("menu-container").style.display = "none";
+            document.getElementById("footer-main").style.display = "flex";
+        });
+
+        function filterDishes(category) {
+            let allDishes = document.querySelectorAll('.dish');
+            if (category === 'all') {
+                allDishes.forEach(dish => dish.style.display = 'block');
+            } else {
+                allDishes.forEach(dish => dish.style.display = 'none');
+                document.querySelectorAll(`.dish.${category}`).forEach(dish => dish.style.display = 'block');
+            }
+        }
+
+        document.querySelectorAll("#menu-nav a").forEach(menuItem => {
+            menuItem.addEventListener("click", function () {
+                document.getElementById("menu-container").style.display = "none";
+                document.getElementById("footer-main").style.display = "flex";
+            });
+        });
+
+        let whatsappNumber = "";
+        let upiId = "";
+
+        // Fetch restaurant details from header.json
+        fetch("header.json")
+            .then(response => response.json())
+            .then(data => {
+                console.log("Loaded Data:", data); // Debugging log
+
+                document.querySelector(".restaurant-name").textContent = data.restaurantName;
+                document.querySelector(".restaurant-details").textContent = `${data.address} | ${data.contact}`;
+
+                // Assign values correctly
+                whatsappNumber = data.whatsappNumber || "";
+                upiId = data.upiId || "";
+
+                // Ensure WhatsApp number is properly formatted (without + sign)
+                if (whatsappNumber.startsWith("+")) {
+                    whatsappNumber = whatsappNumber.replace("+", "");
+                }
+
+                console.log("WhatsApp Number:", whatsappNumber); // Debugging
+                console.log("UPI ID:", upiId); // Debugging
+            })
+            .catch(error => console.error("Error loading header data:", error));
+
+        function shareOnWhatsApp() {
+            if (!upiId || !whatsappNumber) {
+                alert("UPI ID or WhatsApp number not found. Please try again later.");
+                return;
+            }
+
+            const upiLink = `upi://pay?pa=${upiId}&pn=Restaurant&cu=INR`;
+            const whatsappMessage = `Pay your bill using this UPI ID: ${upiLink}`;
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            console.log("Opening WhatsApp:", whatsappURL);
+            window.open(whatsappURL, "_blank");
+        }
+    </script>
+</body>
+
+</html>

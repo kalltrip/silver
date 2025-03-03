@@ -1,0 +1,123 @@
+[
+  {
+    "id": "1001",
+    "name": "Paneer Tikka",
+    "serving": "Serves 2 adults",
+    "price": 250,
+    "description": "Succulent cubes of paneer marinated in aromatic spices and grilled to perfection. A classic vegetarian delight.",
+    "category": "North Indian",
+    "veg": true,
+    "startTime": 18,
+    "endTime": 23
+  },
+  {
+    "id": "1002",
+    "name": "Palak Paneer",
+    "serving": "Serves 2 adults",
+    "price": 220,
+    "description": "Creamy spinach curry with soft paneer cubes. A nutritious and flavorful North Indian favorite.",
+    "category": "North Indian",
+    "veg": true,
+    "startTime": 12,
+    "endTime": 19
+  },
+  {
+    "id": "1003",
+    "name": "Vegetable Biryani",
+    "serving": "Serves 2 adults",
+    "price": 220,
+    "description": "Fragrant basmati rice cooked with mixed vegetables and aromatic spices. A festive one-pot meal.",
+    "category": "South Indian",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 12
+  },
+  {
+    "id": "1004",
+    "name": "Vegetable Lasagna",
+    "serving": "Serves 2 adults",
+    "price": 320,
+    "description": "Layers of pasta, mixed vegetables, and cheese baked to golden perfection. A comforting Italian-inspired dish.",
+    "category": "Italian",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1005",
+    "name": "Vegetable Manchurian",
+    "serving": "Serves 2 adults",
+    "price": 220,
+    "description": "Crispy vegetable dumplings tossed in a tangy and spicy sauce. An Indo-Chinese favorite.",
+    "category": "Chinese",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1006",
+    "name": "Dal Tadka",
+    "serving": "Serves 2 adults",
+    "price": 180,
+    "description": "Yellow lentils tempered with cumin, garlic, and aromatic spices. A protein-packed comfort food.",
+    "category": "North Indian",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1007",
+    "name": "Aloo Gobi",
+    "serving": "Serves 2 adults",
+    "price": 200,
+    "description": "Cauliflower and potatoes cooked with turmeric, cumin, and other spices. A classic North Indian dish.",
+    "category": "North Indian",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1008",
+    "name": "Chana Masala",
+    "serving": "Serves 2 adults",
+    "price": 220,
+    "description": "Chickpeas simmered in a spicy tomato-based sauce with onions and aromatic spices.",
+    "category": "North Indian",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1009",
+    "name": "Cauliflower Rice Stir Fry",
+    "serving": "Serves 2 adults",
+    "price": 250,
+    "description": "Riced cauliflower stir-fried with low-carb vegetables and your choice of protein.",
+    "category": "Healthy",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1010",
+    "name": "Spinach Mushroom Stir-Fry",
+    "serving": "Serves 2 adults",
+    "price": 220,
+    "description": "Fresh spinach and mushrooms sautéed with garlic and spices. A low-carb vegetarian delight.",
+    "category": "Healthy",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  },
+  {
+    "id": "1011",
+    "name": "Paneer Tikka (No Marinade)",
+    "serving": "Serves 2 adults",
+    "price": 270,
+    "description": "Grilled paneer cubes seasoned with keto-friendly spices. A protein-rich vegetarian option.",
+    "category": "Healthy",
+    "veg": true,
+    "startTime": 7,
+    "endTime": 15
+  }
+]
