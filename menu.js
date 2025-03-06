@@ -67,4 +67,3 @@ function populateMenu(data, containerId) {
         container.appendChild(dishElement);
     });
 }
-
