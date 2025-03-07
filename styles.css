@@ -298,7 +298,7 @@ body {
 }
 
 .category-nav button:hover {
-    background-color: #fbe9ce;
+    background-color:#007bff;
     font-size: 1.0rem;
 }
 
@@ -343,7 +343,7 @@ body {
         position: sticky;
         top: 70px;
         /* Adjust to match .restaurant-info height */
-        background-color: #fff;
+       
         padding: 3px 0px;
         /* display: flex; */
     }

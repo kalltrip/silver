@@ -66,4 +66,41 @@ function populateMenu(data, containerId) {
 
         container.appendChild(dishElement);
     });
+    handleReadMore();
 }
+
+function handleReadMore() {
+    if (window.innerWidth >= 480) return;
+
+    document.querySelectorAll(".dish-description").forEach(desc => {
+        let shortText = desc.getAttribute("data-short");
+        let fullText = desc.getAttribute("data-full");
+
+        desc.innerHTML = shortText + ' <span class="read-more" style="color: #31B404; cursor: pointer;">Read More</span>';
+
+        desc.addEventListener("click", function (event) {
+            if (event.target.classList.contains("read-more")) {
+                desc.innerHTML = fullText + ' <span class="read-less" style="color: #31B404; cursor: pointer;">Read Less</span>';
+            } else if (event.target.classList.contains("read-less")) {
+                desc.innerHTML = shortText + ' <span class="read-more" style="color: #31B404; cursor: pointer;">Read More</span>';
+            }
+        });
+    });
+}
+
+function handleResize() {
+    document.querySelectorAll(".dish-description").forEach(desc => {
+        let fullText = desc.getAttribute("data-full");
+        let shortText = desc.getAttribute("data-short");
+
+        if (window.innerWidth >= 480) {
+            desc.innerHTML = fullText;
+        } else {
+            desc.innerHTML = shortText + ' <span class="read-more" style="color: #31B404; cursor: pointer;">Read More</span>';
+            handleReadMore();
+        }
+    });
+}
+
+window.addEventListener("resize", handleResize);
+handleResize();
