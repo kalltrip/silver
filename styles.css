@@ -148,7 +148,7 @@ body {
 /* Button styling */
 #toggle-nav,
 .placeorder{
-    padding: 8px 30px;
+    padding: 6px 12px;
     font-size: 1.0rem;
     cursor: pointer;
     border-radius: 5px;
@@ -160,21 +160,27 @@ body {
 }
 
 #hide-nav {
-    background-color: #55a7ff;
+    background-color: #007bff;
     color: white;
-    padding: 4px 10px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px dashed #333;border-width: thin; 
+    margin: 5px 0px;
 }
+
+
 
 /* Menu styling (hidden initially) */
 #menu-container {
     display: none;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     text-align: center;
+
 }
 
 #menu-nav a {
@@ -182,8 +188,10 @@ body {
     text-decoration: none;
     color: black;
     padding: 5px 0;
-    font-size: 0.9rem;
-    background-color: #c2d8fc;
+    font-size: 1rem;
+    background-color: #c0d8ff;
+    text-transform: uppercase;
+    border-bottom: 1px dotted #333; 
 }
 
 /* Adjust WhatsApp and Call Us when menu is open */

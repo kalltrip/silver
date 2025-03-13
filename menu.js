@@ -104,3 +104,86 @@ function handleResize() {
 
 window.addEventListener("resize", handleResize);
 handleResize();
+let whatsappNumber = "";
+let upiId = "";
+
+// Fetch restaurant details from header.json
+fetch("header.json")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Loaded Data:", data); // Debugging log
+
+        document.querySelector(".restaurant-name").textContent = data.restaurantName;
+        document.querySelector(".restaurant-details").textContent = `${data.address} | ${data.contact}`;
+
+        // Assign values correctly
+        whatsappNumber = data.whatsappNumber || "";
+        upiId = data.upiId || "";
+
+        // Ensure WhatsApp number is properly formatted (without + sign)
+        if (whatsappNumber.startsWith("+")) {
+            whatsappNumber = whatsappNumber.replace("+", "");
+        }
+
+        console.log("WhatsApp Number:", whatsappNumber); // Debugging
+        console.log("UPI ID:", upiId); // Debugging
+    })
+    .catch(error => console.error("Error loading header data:", error));
+
+function shareOnWhatsApp() {
+    if (!upiId || !whatsappNumber) {
+        alert("UPI ID or WhatsApp number not found. Please try again later.");
+        return;
+    }
+
+    const upiLink = `upi://pay?pa=${upiId}&pn=Restaurant&cu=INR`;
+    const whatsappMessage = `Pay your bill using this UPI ID: ${upiLink}`;
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    console.log("Opening WhatsApp:", whatsappURL);
+    window.open(whatsappURL, "_blank");
+}
+
+document.getElementById("toggle-nav").addEventListener("click", function () {
+    document.getElementById("menu-container").style.display = "block";
+    document.getElementById("footer-main").style.display = "none";
+});
+document.getElementById("toggle-nav").addEventListener("click", function () {
+    document.getElementById("menu-container").style.display = "block";
+    document.getElementById("footer-main").style.display = "none";
+
+    // Hide footer-text when menu is open
+    let footerText = document.querySelector(".footer-text");
+    if (footerText) {
+        footerText.style.display = "none";
+    }
+});
+
+document.getElementById("hide-nav").addEventListener("click", function () {
+    document.getElementById("menu-container").style.display = "none";
+    document.getElementById("footer-main").style.display = "flex";
+
+    // Show footer-text again when menu is hidden
+    let footerText = document.querySelector(".footer-text");
+    if (footerText) {
+        footerText.style.display = "block";
+    }
+});
+
+
+function filterDishes(category) {
+    let allDishes = document.querySelectorAll('.dish');
+    if (category === 'all') {
+        allDishes.forEach(dish => dish.style.display = 'block');
+    } else {
+        allDishes.forEach(dish => dish.style.display = 'none');
+        document.querySelectorAll(`.dish.${category}`).forEach(dish => dish.style.display = 'block');
+    }
+}
+
+document.querySelectorAll("#menu-nav a").forEach(menuItem => {
+    menuItem.addEventListener("click", function () {
+        document.getElementById("menu-container").style.display = "none";
+        document.getElementById("footer-main").style.display = "flex";
+    });
+});
